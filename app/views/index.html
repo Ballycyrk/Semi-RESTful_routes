@@ -7,8 +7,30 @@
   </head>
   <body>
     <div id="container">
-      <h2>Come here often?</h2>
-      <img src="https://ballycyrk.smugmug.com/People/Friends-Family/i-TX4pHbn/0/1694x1152/image2153-1694x1152.jpg" alt='howdy'>
+      <h2>Products</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th class='price'>Price</th>
+            <th class='action'>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Hose</td>
+            <td>For your neighbor</td>
+            <td>$14.99</td>
+            <td>
+              <button><a href="/Products/show/{{<id>}}">Show</a></button>
+              <button><a href="/Products/edit/{{<id>}}">Edit</a></button>
+              <button class='btn'><a href="/Products/destroy/{{<id>}}">Remove</a></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h4><a href='/Products/new'>Add a new product</h4>
     </div>
   </body>
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charvar='utf-8' />
+    <title>Add a product</title>
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+  </head>
+  <body>
+    <div id="container">
+      <h2>Add a new product</h2>
+      <form action='/Products/create' method='post'>
+        <h3>Name</h3>
+        <input type='text' name='name' placeholder='New Product Name'>
+        <input type='text' name='Description' placeholder='Product Description'>
+        <input type='text' name='Price' placeholder='Product Price'>
+        <input class='btn' type='submit' value='Create'>>
+      </form>
+      <h4><a href='/Products'>Go back</a></h4>
+    </div>
+  </body>
+</html>

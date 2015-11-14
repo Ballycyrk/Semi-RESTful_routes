@@ -1,25 +1,10 @@
 from system.core.router import routes
 
-"""
-    This is where you define routes
-
-    Start by defining the default controller
-    Pylot will look for the index method in the default controller to handle the base route
-
-    Pylot will also automatically generate routes that resemble: '/controller/method/parameters'
-    For example if you had a products controller with an add method that took one parameter
-    named id the automatically generated url would be '/products/add/<id>'
-    The automatically generated routes respond to all of the http verbs (GET, POST, PUT, PATCH, DELETE)
-"""
-routes['default_controller'] = 'Welcome'
-"""
-    Here is an example of the restful routes for users:
-
-    routes['GET']['/users'] = 'users#index'
-    routes['GET']['/users/new'] = 'users#new'
-    routes['POST']['/users'] = 'users#create'
-    routes['GET']['/users/<int:id>'] = 'users#show'
-    routes['GET']['/users/<int:id>/edit' = 'users#edit'
-    routes['PATCH']['/users/<int:id>'] = 'users#update'
-    routes['DELETE']['/users/<int:id>'] = 'users#destroy'
-"""
+routes['default_controller']            = 'Products'
+routes['/Products']                     = 'Products#index'
+routes['GET']['/Products/new']          = 'Products#new'
+routes['POST']['/Products/create']      = 'Products#create'
+routes['POST']['/Products/update/<id>'] = 'Products#update'
+routes['GET']['/Products/show/<id>']    = 'Products#show'
+routes['GET']['/Products/edit/<id>']    = 'Products#edit'
+routes['GET']['/Products/destroy/<id>']  = 'Products#destroy'

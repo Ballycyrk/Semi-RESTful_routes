@@ -7,11 +7,32 @@
 #container {
   width: 970px;
   margin: 0px auto;
-  text-align: center;
   vertical-align: top;
 }
 
-img {
-  width: 800px;
-  height: auto;
+.action {
+  width: 165px
+}
+
+.price {
+  width: 100px;
+}
+
+table {
+  width: 970px;
+  margin: 0px auto;
+  border: 2px solid black;
+}
+
+tr {
+  text-align: center;
+}
+
+thead {
+  background-color: gray;
+  border-bottom: solid;
+}
+
+tbody tr {
+  border: 1px dotted green;
 }
