@@ -3,30 +3,53 @@ from system.core.controller import *
 class Products(Controller):
   def __init__(self, action):
     super(Products, self).__init__(action)
+    self.load_model('Product')
 
   def index(self):
-    return self.load_view('index.html')
+    products = self.models['Product'].show_all()
+    return self.load_view('index.html', products = products)
 
   def new(self):
     return self.load_view('new.html')
 
   def create(self):
-    params = {}
-    pass
+    params = {
+    'name'        : request.form['name'],
+    'description' : request.form['description'],
+    'price'       : request.form['price']}
+    self.models['Product'].add(params)
+    try:
+      params['error']
+      flash(params['error'])
+      return self.load_view('edit.html', product = params)
+    except:
+      return redirect('/')
 
   def show(self, id):
-    # call db for product by id
-    return self.load_view('show.html', id = id)
+    product = self.models['Product'].show(id)
+    return self.load_view('show.html', product = product[0])
 
-  def edit(self):
-    #call db load form values with current variables
-    return self.load_view('edit.html')
+  def edit(self, id):
+    session['id'] = id
+    product = self.models['Product'].show(id)
+    return self.load_view('edit.html', product = product[0])
 
   def update(self, id):
     #insert query from form via edit.html
-    pass
+    params = {
+    'id'          : id,
+    'name'        : request.form['name'],
+    'description' : request.form['description'],
+    'price'       : request.form['price']}
+    self.models['Product'].update(params)
+    try:
+      params['error']
+      flash(params['error'])
+      return self.load_view('edit.html', product = params)
+    except:
+      return redirect('/')
 
   def destroy(self, id):
-    #delete from db
+    #delete from d
     pass
 

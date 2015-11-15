@@ -18,16 +18,18 @@
           </tr>
         </thead>
         <tbody>
+          {% for product in products %}
           <tr>
-            <td>Hose</td>
-            <td>For your neighbor</td>
-            <td>$14.99</td>
+            <td>{{ product['name'] }}</td>
+            <td>{{ product['description'] }}</td>
+            <td>${{ product['price'] }}</td>
             <td>
-              <button><a href="/Products/show/{{<id>}}">Show</a></button>
-              <button><a href="/Products/edit/{{<id>}}">Edit</a></button>
-              <button class='btn'><a href="/Products/destroy/{{<id>}}">Remove</a></button>
+              <button><a href="/Products/show/{{ product['id'] }}">Show</a></button>
+              <button><a href="/Products/edit/{{ product['id'] }}">Edit</a></button>
+              <button class='btn'><a href="/Products/destroy/{{ product['id'] }}">Remove</a></button>
             </td>
           </tr>
+          {% endfor %}
         </tbody>
       </table>
       <h4><a href='/Products/new'>Add a new product</h4>
