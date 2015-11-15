@@ -16,7 +16,6 @@ class Product(Model):
 
     def update(self, params):
       CURRENCY_REGEX = re.compile(r'^\d*.?\d{0,2}$')
-      print params['price']
       if not CURRENCY_REGEX.match(params['price']):
         params['error'] ='Please enter the new price with dollars and cents without a $ sign.'
         params['price'] = 'DD.CC'
@@ -29,13 +28,18 @@ class Product(Model):
 
     def add(self, params):
       CURRENCY_REGEX = re.compile(r'^\d*.?\d{0,2}$')
-      print params['price']
       if not CURRENCY_REGEX.match(params['price']):
-        params['error'] ='Please enter the new price with dollars and cents without a $ sign.'
+        params['error'] ='Please enter the price with dollars and cents without a $ sign.'
         params['price'] = 'DD.CC'
         return
       else:
-        update = "UPDATE products SET name = %s, description = %s, price = %s, updated_at = NOW() WHERE id=%s"
-        data = (params['name'], params['description'], params['price'], params['id'])
-        self.db.query_db(update, data)
+        insert = "INSERT INTO products(name, description, price, created_at, updated_at) VALUES (%s, %s, %s, NOW(), NOW())"
+        data = (params['name'], params['description'], params['price'])
+        self.db.query_db(insert, data)
       return
+
+    def destroy(self, id):
+      bye = "DELETE FROM products WHERE id = {}".format(id)
+      self.db.query_db(bye)
+      return
+

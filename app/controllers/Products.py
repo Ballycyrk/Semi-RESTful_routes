@@ -21,7 +21,7 @@ class Products(Controller):
     try:
       params['error']
       flash(params['error'])
-      return self.load_view('edit.html', product = params)
+      return self.load_view('new.html', product = params)
     except:
       return redirect('/')
 
@@ -30,7 +30,6 @@ class Products(Controller):
     return self.load_view('show.html', product = product[0])
 
   def edit(self, id):
-    session['id'] = id
     product = self.models['Product'].show(id)
     return self.load_view('edit.html', product = product[0])
 
@@ -50,6 +49,6 @@ class Products(Controller):
       return redirect('/')
 
   def destroy(self, id):
-    #delete from d
-    pass
+    self.models['Product'].destroy(id)
+    return redirect('/')
 
